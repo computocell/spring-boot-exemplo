@@ -54,6 +54,7 @@ public class ExemploApplicationTests {
     @Test
     public void findOneTest() {
         Contact contact = service.findOne(createContactId);
+
         assertThat(contact.getName()).contains("Contact");
         assertThat(contact.getEmail()).startsWith("contact");
         assertThat(contact.getPhone()).endsWith("9191");
