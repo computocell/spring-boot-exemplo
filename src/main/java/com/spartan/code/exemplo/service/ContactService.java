@@ -12,7 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.spartan.code.exemplo.domain.Contact;
-import com.spartan.code.exemplo.domain.ContactType;
 import com.spartan.code.exemplo.dto.FilterContactDTO;
 import com.spartan.code.exemplo.repository.ContactRepository;
 
