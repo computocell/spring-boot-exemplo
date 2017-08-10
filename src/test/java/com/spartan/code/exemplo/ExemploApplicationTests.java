@@ -29,14 +29,15 @@ public class ExemploApplicationTests {
 
     @Before
     public void createContactIfNotExists() {
-        Contact contact = new Contact();
-        contact.setEmail("contact@mail.com");
-        contact.setName("Contact Test");
-        contact.setPhone("+55 31 91919191");
-        contact.setType(ContactType.WORK);
-        Contact created = service.add(contact);
-        createContactId = created.getId();
-
+        Contact contact = service.add(
+            Contact.builder()
+                .email("contact@mail.com")
+                .name("Contact Test")
+                .phone("+55 31 91919191")
+                .type(ContactType.WORK)
+                .build()
+        );
+        createContactId = contact.getId();
     }
 
     @After
