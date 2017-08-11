@@ -1,6 +1,7 @@
 package com.spartan.code.exemplo.service;
 
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.exact;
+import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.startsWith;
 import static org.springframework.data.domain.ExampleMatcher.matching;
 
 import java.util.List;
@@ -58,11 +59,15 @@ public class ContactService {
     }
 
     public Page<Contact> findByFilter(FilterContactDTO filter, Pageable pageable) {
-        Contact contact = Contact.builder().type(filter.getType()).build();
+        Contact contact = Contact.builder()
+                .type(filter.getType())
+                .name(filter.getName())
+                .build();
 
-        return repository.findAll(
-            Example.of(contact, matching().withMatcher("type", exact())),
-            pageable
-        );
+        Example<Contact> example = Example.of(contact, matching()
+                .withMatcher("type", exact())
+                .withMatcher("name", startsWith()));
+
+        return repository.findAll(example,pageable);
     }
 }

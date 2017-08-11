@@ -47,7 +47,7 @@ public class ContactController {
     }
 
     @PostMapping
-    public Contact add(@RequestBody Contact contact) {
+    public Contact add(@Valid @RequestBody Contact contact) {
         return service.add(contact);
     }
 

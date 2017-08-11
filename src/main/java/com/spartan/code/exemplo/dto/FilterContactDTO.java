@@ -9,4 +9,8 @@ public class FilterContactDTO {
 
     private ContactType type;
 
+    private String name;
+
+    private String email;
+
 }
